@@ -2,7 +2,59 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa; /* Light gray background */
+        color: #495057; /* Dark gray text */
+    }
+
+    .container {
+        max-width: 800px; /* Limit container width for better readability */
+        margin: 0 auto; /* Center container horizontally */
+        padding-top: 50px; /* Add some space at the top */
+    }
+
+    .jumbotron {
+        padding: 2rem 1rem; /* Add padding to the jumbotron */
+        background-color: #fff; /* White background */
+        border-radius: 0.3rem; /* Add rounded corners */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    }
+
+    .lead {
+        font-size: 1.25rem;
+        color: #6c757d; /* Gray text */
+    }
+
+    .text-primary {
+        color: #007bff; /* Blue color */
+    }
+
+    .text-secondary {
+        color: #6c757d; /* Gray text */
+    }
+
+    hr {
+        border-top: 2px solid #007bff; /* Blue line */
+        width: 50%;
+        margin-top: 2rem; /* Add some space above the line */
+        margin-bottom: 2rem; /* Add some space below the line */
+    }
+</style>
+
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1 class="display-4 text-primary">Welcome</h1>
+        <p class="lead">Thank you for visiting our website!</p>
+        <p class="lead">Here you can find information about shift employment and more.</p>
+    </div>
+
+    <hr>
+
+    <div class="text-center">
+        <h2 class="text-secondary">How it Works</h2>
+        <p>Our website provides information about shift employment opportunities. We list different positions, employee details, and more.</p>
+        <p>Feel free to explore the website and learn more about the opportunities we offer.</p>
+    </div>
 </div>

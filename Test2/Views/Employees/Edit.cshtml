@@ -4,67 +4,114 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa; /* Light gray background */
+    }
 
-<h4>Employee</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Position" class="control-label"></label>
-                <input asp-for="Position" class="form-control" />
-                <span asp-validation-for="Position" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Age" class="control-label"></label>
-                <input asp-for="Age" class="form-control" />
-                <span asp-validation-for="Age" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShiftTimings" class="control-label"></label>
-                <select asp-for="ShiftTimings" class="form-control">
-                    <option value="Morning">Morning</option>
-                    <option value="Noon">Noon</option>
-                    <option value="Evening">Evening</option>
-                    <option value="OverTime">OverTime</option>
-                </select>
-                <span asp-validation-for="ShiftTimings" class="text-danger"></span>
-            </div>
+    h1 {
+        color: #007bff; /* Blue heading */
+        font-size: 2.5rem; /* Large font size */
+        margin-bottom: 1.5rem; /* Bottom margin for spacing */
+    }
 
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" type="email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
+    .form-control {
+        border-radius: 0; /* Remove border radius */
+    }
 
-            <div class="form-group">
-                <input asp-for="InvitationAccepted" type="hidden" />
-            </div>
+    label {
+        color: #495057; /* Dark gray text for labels */
+    }
 
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+    .btn-primary {
+        background-color: #007bff; /* Blue button */
+        border-color: #007bff; /* Blue border */
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            border-color: #0056b3; /* Darker blue border on hover */
+        }
+
+    .btn-secondary {
+        background-color: #6c757d; /* Gray button */
+        border-color: #6c757d; /* Gray border */
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker gray on hover */
+            border-color: #5a6268; /* Darker gray border on hover */
+        }
+
+    .card {
+        border: none; /* Remove card border */
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Add shadow */
+    }
+
+    .card-body {
+        padding: 2rem; /* Padding inside card body */
+    }
+</style>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="text-center">Edit Employee</h1>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label">Name:</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Position" class="control-label">Position:</label>
+                            <input asp-for="Position" class="form-control" />
+                            <span asp-validation-for="Position" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Age" class="control-label">Age:</label>
+                            <input asp-for="Age" class="form-control" />
+                            <span asp-validation-for="Age" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Address" class="control-label">Address:</label>
+                            <input asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ShiftTimings" class="control-label">Shift Timings:</label>
+                            <select asp-for="ShiftTimings" class="form-control">
+                                <option value="Morning">Morning</option>
+                                <option value="Noon">Noon</option>
+                                <option value="Evening">Evening</option>
+                                <option value="OverTime">OverTime</option>
+                            </select>
+                            <span asp-validation-for="ShiftTimings" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label">Email:</label>
+                            <input asp-for="Email" type="email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <input asp-for="InvitationAccepted" type="hidden" />
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -4,60 +4,85 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa; /* Light gray background */
+    }
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Employee</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Position)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Position)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Age)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Age)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ShiftTimings)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ShiftTimings)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.InvitationAccepted)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.InvitationAccepted)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+    h1 {
+        color: #007bff; /* Blue heading */
+        font-size: 2.5rem; /* Large font size */
+        margin-bottom: 1.5rem; /* Bottom margin for spacing */
+    }
+
+    h3 {
+        color: #6c757d; /* Dark gray heading */
+        font-size: 1.5rem; /* Medium font size */
+        margin-top: 2rem; /* Top margin for spacing */
+    }
+
+    .card {
+        border: none; /* Remove card border */
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Add shadow */
+    }
+
+    .card-body {
+        padding: 2rem; /* Padding inside card body */
+    }
+
+    .btn-danger {
+        background-color: #dc3545; /* Red button */
+        border-color: #dc3545; /* Red border */
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Darker red on hover */
+            border-color: #bd2130; /* Darker red border on hover */
+        }
+
+    .btn-secondary {
+        background-color: #6c757d; /* Gray button */
+        border-color: #6c757d; /* Gray border */
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker gray on hover */
+            border-color: #545b62; /* Darker gray border on hover */
+        }
+</style>
+
+<h1 class="text-center">Delete Employee</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h3 class="text-center mt-4">Are you sure you want to delete this employee?</h3>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">Name:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+                        <dt class="col-sm-3">Position:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Position)</dd>
+                        <dt class="col-sm-3">Age:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Age)</dd>
+                        <dt class="col-sm-3">Address:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Address)</dd>
+                        <dt class="col-sm-3">Shift Timings:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.ShiftTimings)</dd>
+                        <dt class="col-sm-3">Email:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+                        <dt class="col-sm-3">Invitation Accepted:</dt>
+                        <dd class="col-sm-9">@Html.DisplayFor(model => model.InvitationAccepted)</dd>
+                    </dl>
+                    <form asp-action="Delete" class="text-center">
+                        <input type="hidden" asp-for="Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button> |
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
