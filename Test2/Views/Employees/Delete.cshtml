@@ -11,58 +11,32 @@
     <h4>Employee</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Position)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Position)
         </dd>
-
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Age)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Age)
         </dd>
-
-        <dt class="col-sm-2">
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Address)
         </dt>
-        <dd class="col-sm-10">
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Address)
         </dd>
-
-        <!-- New fields for ShiftTimings and EmailAddress -->
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ShiftTimings)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ShiftTimings)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <!-- Field for AcceptedInvitation -->
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.InvitationAccepted)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.InvitationAccepted)
-        </dd>
     </dl>
-
+    
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |

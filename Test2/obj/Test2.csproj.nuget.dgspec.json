@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ethili Sundaravel\\source\\repos\\CSDD_PROJECT\\Test2\\Test2.csproj": {}
+    "C:\\Users\\Ethili Sundaravel\\source\\repos\\Test2\\Test2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ethili Sundaravel\\source\\repos\\CSDD_PROJECT\\Test2\\Test2.csproj": {
+    "C:\\Users\\Ethili Sundaravel\\source\\repos\\Test2\\Test2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ethili Sundaravel\\source\\repos\\CSDD_PROJECT\\Test2\\Test2.csproj",
+        "projectUniqueName": "C:\\Users\\Ethili Sundaravel\\source\\repos\\Test2\\Test2.csproj",
         "projectName": "Test2",
-        "projectPath": "C:\\Users\\Ethili Sundaravel\\source\\repos\\CSDD_PROJECT\\Test2\\Test2.csproj",
+        "projectPath": "C:\\Users\\Ethili Sundaravel\\source\\repos\\Test2\\Test2.csproj",
         "packagesPath": "C:\\Users\\Ethili Sundaravel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ethili Sundaravel\\source\\repos\\CSDD_PROJECT\\Test2\\obj\\",
+        "outputPath": "C:\\Users\\Ethili Sundaravel\\source\\repos\\Test2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
