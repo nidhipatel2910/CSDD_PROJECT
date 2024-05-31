@@ -3,11 +3,20 @@
 <form method="post" asp-controller="Email" asp-action="SendEmail">
     <p>For Sending mail to the Clients, click the below button:</p>
     <button type="submit" class="btn btn-primary">Send Email</button>
+    <p>@ViewBag.Message</p>
 </form>
 
 <form method="get" asp-controller="Email" asp-action="GenerateReport">
     <p>For Generating Report, click the below button:</p>
     <button type="submit" class="btn btn-primary">Generate Report</button>
 </form>
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info">
+        @ViewBag.Message
+    </div>
+}
+
 
 
