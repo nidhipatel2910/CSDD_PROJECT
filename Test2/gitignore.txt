@@ -1,1 +1,1 @@
-.vs/Test2/FileContentIndex/048d9f64-168d-4e3d-b3ad-9a1db235a3a6.vsidx
+.vs/
