@@ -25,6 +25,10 @@ app.MapControllerRoute(
     name: "employee",
     pattern: "Employee/{action}/{id?}",
     defaults: new { controller = "Employee", action = "Index" });
+app.MapControllerRoute(
+    name: "employee",
+    pattern: "Email/{action}/{id?}",
+    defaults: new { controller = "Email", action = "Index" });
 
 app.MapControllerRoute(
     name: "default",

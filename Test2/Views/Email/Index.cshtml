@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Test2.Models.Employee>
+
+<form method="post" asp-controller="Email" asp-action="SendEmail">
+    <p>For Sending mail to the Clients, click the below button:</p>
+    <button type="submit" class="btn btn-primary">Send Email</button>
+</form>
+
+<form method="get" asp-controller="Email" asp-action="GenerateReport">
+    <p>For Generating Report, click the below button:</p>
+    <button type="submit" class="btn btn-primary">Generate Report</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Shift Timings</th>
+            <th>Email</th>
+            <th>Invitation Accepted</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+{
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.Name</td>
+                <td>@employee.Position</td>
+                <td>@employee.Age</td>
+                <td>@employee.Address</td>
+                <td>@employee.ShiftTimings</td>
+                <td>@employee.Email</td>
+                <td>@(employee.InvitationAccepted ? "Yes" : "No")</td>
+            </tr>
+        }
+}
+        else
+        {
+            <p>No data available</p>
+        }
+    </tbody>
+</table>
