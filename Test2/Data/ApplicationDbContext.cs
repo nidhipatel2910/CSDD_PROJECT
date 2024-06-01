@@ -11,6 +11,7 @@ namespace Test2.Data
         }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<InvitationHistory> InvitationHistoryS { get; set; }
     }
 }
 

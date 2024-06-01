@@ -9,6 +9,7 @@ using System.Net.Mail;
 using Test2.Data;
 using Test2.Models;
 using OfficeOpenXml;
+using Microsoft.Extensions.Logging;
 
 namespace Test2.Controllers
 {
@@ -16,11 +17,13 @@ namespace Test2.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly Test2Context _context;
+        private readonly ILogger<EmailController> _logger;
 
-        public EmailController(IConfiguration configuration, Test2Context context)
+        public EmailController(IConfiguration configuration, Test2Context context, ILogger<EmailController> logger)
         {
             _configuration = configuration;
             _context = context;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -29,7 +32,7 @@ namespace Test2.Controllers
         }
 
         [HttpPost]
-        public IActionResult SendEmail()
+        public IActionResult SendEmail(int employeeId)
         {
             try
             {
@@ -91,74 +94,7 @@ namespace Test2.Controllers
                     ViewBag.Message += " Inner Exception - " + ex.InnerException.Message;
                 }
             }
-
-            return View("Index");
-        }
-
-
-        [HttpPost]
-        public IActionResult SendEmail1111()
-        {
-            try
-            {
-                Console.WriteLine($"SMTP Details");
-                // Get SMTP configuration and predefined email details from appsettings.json
-                string smtpServer = _configuration["SmtpSettings:Server"];
-                int smtpPort = int.Parse(_configuration["SmtpSettings:Port"]);
-                string smtpUsername = _configuration["SmtpSettings:Username"];
-                string smtpPassword = _configuration["SmtpSettings:Password"];
-                Console.WriteLine($"SMTP Username: {smtpUsername}");
-                Console.WriteLine($"SMTP Password: {smtpPassword}");
-                Console.WriteLine($"SMTP smtpServer: {smtpServer}");
-                Console.WriteLine($"SMTP smtpPort: {smtpPort}");
-                string recipientEmail = _configuration["SmtpSettings:RecipientEmail"];
-                string subject = _configuration["SmtpSettings:Subject"];
-                string body = _configuration["SmtpSettings:Body"];
-                Console.WriteLine($"SMTP recipientEmail: {recipientEmail}");
-                Console.WriteLine($"SMTP subject: {subject}");
-                // Configure the SMTP client
-                using (SmtpClient smtpClient = new SmtpClient(smtpServer))
-                {
-                    smtpClient.UseDefaultCredentials = false;
-                    smtpClient.Port = smtpPort;
-                    smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
-                    smtpClient.EnableSsl = true;
-
-                    // Create the email message
-                    using (MailMessage mailMessage = new MailMessage())
-                    {
-                        mailMessage.From = new MailAddress(smtpUsername);
-                        mailMessage.To.Add(recipientEmail);
-                        mailMessage.Subject = subject;
-                        mailMessage.Body = body;
-                        mailMessage.IsBodyHtml = true; // Set to true if using HTML in the body
-
-                        Console.WriteLine($"SMTP sending mail body: {body}");
-                        // Send the email
-                        smtpClient.Send(mailMessage);
-                    }
-                }
-
-                ViewBag.Message = "Email sent successfully!";
-            }
-            catch (SmtpException smtpEx)
-            {
-                // Log detailed SMTP exception
-                ViewBag.Message = "Error sending email: SMTP Exception - " + smtpEx.Message;
-                if (smtpEx.InnerException != null)
-                {
-                    ViewBag.Message += " Inner Exception - " + smtpEx.InnerException.Message;
-                }
-            }
-            catch (Exception ex)
-            {
-                // Log general exception
-                ViewBag.Message = "Error sending email: General Exception - " + ex.Message;
-                if (ex.InnerException != null)
-                {
-                    ViewBag.Message += " Inner Exception - " + ex.InnerException.Message;
-                }
-            }
+            
 
             return View("Index");
         }
@@ -199,7 +135,38 @@ namespace Test2.Controllers
             {
                 ViewBag.Message = "Invalid invitation.";
             }
+            LogInvitationEvent(id, "InvitationAccepted"); // Change 'employeeId' to 'id'
+
             return View();
+        }
+
+        private void LogInvitationEvent(int employeeId, string eventType)
+        {
+            var invitationHistory = new InvitationHistory
+            {
+                EmployeeId = employeeId,
+                EventType = eventType,
+                EventDateTime = DateTime.UtcNow
+            };
+
+            _context.InvitationHistory.Add(invitationHistory);
+            _context.SaveChanges();
+
+            _logger.LogInformation($"Invitation event logged: EmployeeId={employeeId}, EventType={eventType}");
+        }
+
+        
+        public IActionResult InvitationHistory()
+        {
+            var invitationHistory = _context.InvitationHistory.ToList(); // Assuming you have a DbSet for InvitationHistory
+            var invitationHistoryViewModels = invitationHistory.Select(h => new InvitationHistory
+            {
+                EmployeeId = h.EmployeeId,
+                EventType = h.EventType,
+                EventDateTime = h.EventDateTime
+            });
+
+            return View(invitationHistoryViewModels);
         }
 
     }

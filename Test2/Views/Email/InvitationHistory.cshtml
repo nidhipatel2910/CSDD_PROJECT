@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Test2.ViewModels.InvitationHistoryViewModel>
+
+@{
+    ViewData["Title"] = "Invitation History";
+}
+
+<h2>Invitation History</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Event Type</th>
+            <th>Event Date Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var history in Model)
+        {
+            <tr>
+                <td>@history.EmployeeId</td>
+                <td>@history.EventType</td>
+                <td>@history.EventDateTime</td>
+            </tr>
+        }
+    </tbody>
+</table>

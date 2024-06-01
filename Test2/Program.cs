@@ -26,10 +26,13 @@ app.MapControllerRoute(
     pattern: "Employee/{action}/{id?}",
     defaults: new { controller = "Employee", action = "Index" });
 app.MapControllerRoute(
-    name: "employee",
+    name: "invite",
     pattern: "Email/{action}/{id?}",
     defaults: new { controller = "Email", action = "Index" });
-
+app.MapControllerRoute(
+    name: "history",
+    pattern: "Email/History",
+    defaults: new { controller = "Email", action = "InvitationHistory" });
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
